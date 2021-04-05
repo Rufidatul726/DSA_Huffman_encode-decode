@@ -21,8 +21,7 @@ struct MinHeap {
 };
 
 struct MinHeapNode* newNode(char data, unsigned freq){
-	struct MinHeapNode* temp = (struct MinHeapNode*)malloc(
-		sizeof(struct MinHeapNode));
+	struct MinHeapNode* temp = (struct MinHeapNode*)malloc(sizeof(struct MinHeapNode));
 
 	temp->left = temp->right = NULL;
 	temp->data = data;
@@ -38,8 +37,7 @@ struct MinHeap* createMinHeap(unsigned capacity){
 
 	minHeap->capacity = capacity;
 
-	minHeap->array = (struct MinHeapNode**)malloc(
-		minHeap->capacity * sizeof(struct MinHeapNode*));
+	minHeap->array = (struct MinHeapNode**)malloc(minHeap->capacity * sizeof(struct MinHeapNode*));
 	return minHeap;
 }
 
@@ -66,20 +64,13 @@ void minHeapify(struct MinHeap* minHeap, int idx){
 	int left = 2 * idx + 1;
 	int right = 2 * idx + 2;
 
-	if (left < minHeap->size
-		&& minHeap->array[left]->freq
-			< minHeap->array[smallest]->freq)
-		smallest = left;
+	if (left < minHeap->size && minHeap->array[left]->freq< minHeap->array[smallest]->freq)smallest = left;
 
-	if (right < minHeap->size
-		&& minHeap->array[right]->freq
-			< minHeap->array[smallest]->freq)
-		smallest = right;
+	if (right < minHeap->size&& minHeap->array[right]->freq< minHeap->array[smallest]->freq)smallest = right;
 
 	if (smallest != idx) {
-		swapMinHeapNode(&minHeap->array[smallest],
-						&minHeap->array[idx]);
-		minHeapify(minHeap, smallest);
+	    swapMinHeapNode(&minHeap->array[smallest],&minHeap->array[idx]);
+            minHeapify(minHeap, smallest);
 	}
 }
 
@@ -117,14 +108,12 @@ void buildMinHeap(struct MinHeap* minHeap){
 	int n = minHeap->size - 1;
 	int i;
 
-	for (i = (n - 1) / 2; i >= 0; --i)
-		minHeapify(minHeap, i);
+	for (i = (n - 1) / 2; i >= 0; --i)minHeapify(minHeap, i);
 }
 
 void printArr(int arr[], int n){
 	int i;
-	for (i = 0; i < n; ++i)
-		printf("%d", arr[i]);
+	for (i = 0; i < n; ++i)printf("%d", arr[i]);
 
 	printf("\n");
 }
@@ -211,7 +200,10 @@ void decoder(int a[], int size){
             while(j<count1[n]){
                     if(a[i]!=strr[n][j]){n++;}
                     if(a[i]==strr[n][j] && j!=count1[n]-1){i++;j++;}
-                    if(a[i]==strr[n][j] && j==count1[n]-1){printf("%c",strrr[n]);break;}
+                    if(a[i]==strr[n][j] && j==count1[n]-1){
+                       printf("%c",strrr[n]);
+                       break;
+                    }
             }
     }
 }
@@ -227,7 +219,7 @@ int main(){
    fptr = fopen("F:\\Sumon sir\\Assignment huffman coding\\test.txt","r");
 
     if(fptr == NULL){
-      printf("Error!");
+      printf("Error! Try again. ");
       return 0;
    }
 
